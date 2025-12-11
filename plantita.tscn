@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkhg3spwtfwlb"]
+
+[ext_resource type="Texture2D" uid="uid://beimwcc3igxl" path="res://sprites/Plants/beet/beet_3.png" id="1_10wjv"]
+[ext_resource type="Texture2D" uid="uid://bwe1ivynowau4" path="res://sprites/Plants/beet/beet_8.png" id="2_4mttf"]
+[ext_resource type="Texture2D" uid="uid://dxx0o0i51u8fk" path="res://sprites/Plants/beet/beet_11.png" id="3_aljve"]
+[ext_resource type="Texture2D" uid="uid://d1h6rnvitbc0e" path="res://sprites/Plants/beet/beet_13.png" id="4_qvcq6"]
+[ext_resource type="Texture2D" uid="uid://dc1frryik3v5v" path="res://sprites/Plants/cabbage/cabbage_1.png" id="5_qpjpu"]
+[ext_resource type="Texture2D" uid="uid://d07sdqui47ro4" path="res://sprites/Plants/cabbage/cabbage_7.png" id="6_2nxl2"]
+[ext_resource type="Texture2D" uid="uid://b7lyuwwklfaab" path="res://sprites/Plants/cabbage/cabbage_13.png" id="7_1n4xy"]
+[ext_resource type="Texture2D" uid="uid://c5xrujb4l1uq4" path="res://sprites/Plants/cabbage/cabbage_20.png" id="8_so0tc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cc3en"]
+size = Vector2(24, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmfa8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_10wjv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4mttf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_aljve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qvcq6")
+}],
+"loop": true,
+"name": &"beet",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_qpjpu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2nxl2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1n4xy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_so0tc")
+}],
+"loop": true,
+"name": &"cabbage",
+"speed": 5.0
+}]
+
+[node name="Plantita" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_cc3en")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.6, 1.6)
+sprite_frames = SubResource("SpriteFrames_hmfa8")
+animation = &"cabbage"
