@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbabb4j20mrlq"]
+[gd_scene load_steps=3 format=3 uid="uid://bbabb4j20mrlq"]
 
-[ext_resource type="Script" uid="uid://dwtunkrag0qe0" path="res://scripts/world.gd" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://dwtunkrag0qe0" path="res://scripts/world.gd" id="1_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://c6e5axfvnuq67" path="res://sprites/World/world.png" id="2_4wyf3"]
 
 [node name="World" type="Area2D"]
-script = ExtResource("1_f3sb7")
+position = Vector2(640, 1061)
+script = ExtResource("1_rwgxs")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4wyf3")
+metadata/_edit_group_ = true
