@@ -35,6 +35,11 @@ rotation = 1.5707964
 position = Vector2(640, 73)
 scale = Vector2(1.5, 1.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol"]
-position = Vector2(2.5629997e-06, 4.7683716e-07)
+[node name="Area2D" type="Area2D" parent="Sol"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol/Area2D"]
 shape = SubResource("ConvexPolygonShape2D_tbgi4")
+
+[node name="Polygon2D" type="Polygon2D" parent="Sol/Area2D/CollisionShape2D"]
+color = Color(1, 1, 0, 0.12941177)
+polygon = PackedVector2Array(-5.3333435, 31.333332, -48, 280.6667, 46, 279.33334, 5.333313, 31.333332)
