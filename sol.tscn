@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvntaf5p7dcse"]
+
+[ext_resource type="Texture2D" uid="uid://cvu7uxer6xnot" path="res://sprites/World/sun.png" id="1_q5tmw"]
+
+[node name="Sol" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_q5tmw")
