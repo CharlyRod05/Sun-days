@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctg8nklvu05bk"]
+
+[ext_resource type="Script" uid="uid://vjxp1gdpf71s" path="res://scripts/astroman.gd" id="1_w3nl1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mj0ck"]
+
+[node name="Astroman" type="Area2D"]
+script = ExtResource("1_w3nl1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_mj0ck")
