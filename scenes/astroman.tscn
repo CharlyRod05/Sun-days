@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctg8nklvu05bk"]
+[gd_scene load_steps=18 format=3 uid="uid://ctg8nklvu05bk"]
 
 [ext_resource type="Script" uid="uid://vjxp1gdpf71s" path="res://scripts/astroman.gd" id="1_w3nl1"]
 [ext_resource type="Texture2D" uid="uid://c6ek40wvy7puv" path="res://sprites/Astronaut/Astronaut Player.png" id="2_owq8s"]
@@ -6,6 +6,18 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_2aesk"]
 atlas = ExtResource("2_owq8s")
 region = Rect2(0, 0, 32, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owq8s"]
+atlas = ExtResource("2_owq8s")
+region = Rect2(0, 0, 32, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wq70w"]
+atlas = ExtResource("2_owq8s")
+region = Rect2(32, 0, 32, 53)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gns8e"]
+atlas = ExtResource("2_owq8s")
+region = Rect2(160, 0, 32, 53)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4iwsp"]
 atlas = ExtResource("2_owq8s")
@@ -44,6 +56,15 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2aesk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owq8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wq70w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gns8e")
 }],
 "loop": true,
 "name": &"standing",
@@ -108,17 +129,17 @@ script = ExtResource("1_w3nl1")
 [node name="Pivot" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
+position = Vector2(0, -400)
 scale = Vector2(0.99999994, 0.99999994)
 sprite_frames = SubResource("SpriteFrames_mj0ck")
-animation = &"walking"
-offset = Vector2(0, -616)
+animation = &"standing"
 metadata/_edit_group_ = true
 
 [node name="Hambre" type="ProgressBar" parent="Pivot/AnimatedSprite2D"]
-offset_left = -54.99999
-offset_top = -58.000008
-offset_right = 101.000015
-offset_bottom = -31.000008
+offset_left = -55.0
+offset_top = -45.0
+offset_right = 101.0
+offset_bottom = -18.0
 scale = Vector2(0.7, 0.7)
 theme_override_styles/background = SubResource("StyleBoxFlat_owq8s")
 theme_override_styles/fill = SubResource("StyleBoxFlat_2aesk")
@@ -135,3 +156,6 @@ offset_bottom = 17.0
 color = Color(1, 0, 0, 1)
 
 [node name="TimerPasos" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="TimerPasos" to="." method="_on_timer_pasos_timeout"]

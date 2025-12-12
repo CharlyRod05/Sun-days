@@ -1,49 +1,59 @@
 extends Area2D
-@export var speed = 400
+@export var speed = 0.1
 var screen_size
 var ratio_hambre
 var hambreado
-var inactivo
+var caminando
+var direccion
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	ratio_hambre = 0.001
-	$Hambre.value = 100
+	ratio_hambre = 0.01
+	$Pivot/AnimatedSprite2D/Hambre.value = 100
 	hambreado = false
-	inactivo = true
+	caminando = false
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	$Hambre.value -= ratio_hambre
+	$Pivot/AnimatedSprite2D/Hambre.value -= ratio_hambre
 	
-	if $Hambre.value == 0:
+	if $Pivot/AnimatedSprite2D/Hambre.value == 0:
 		queue_free()
-	if inactivo: 
-		if !hambreado:
-			deambulando()
+	if $Pivot/AnimatedSprite2D/Hambre.value <= 25:
+		hambreado = true
+	else:
+		hambreado = false
 		
-		
-func deambulando() -> void:
-	inactivo = false
-	var direccion = randf_range(0,2)
-	var tiempo = randf_range(2,6)
-	$TimerPasos.wait_time = tiempo
-	$TimerPasos.start()
-	match direccion:
-		0:#izquierda
-			while($TimerPasos.time_left==0):
-				$Pivot.rotation += 5
-		1:
-			while($TimerPasos.time_left==0):
-				$Pivot.rotation -= 5
-		2:
-			while($TimerPasos.time_left==0):
-				pass
-		_:
-			pass
-	inactivo = true
+			
+	if caminando:
+		match direccion:
+			0:  # izquierda
+				$Pivot.rotation += speed * delta
+				$Pivot/AnimatedSprite2D.flip_h = false
+				$Pivot/AnimatedSprite2D.play("walking")
+			1:  # derecha
+				$Pivot.rotation -= speed * delta
+				$Pivot/AnimatedSprite2D.flip_h = true
+				$Pivot/AnimatedSprite2D.play("walking")
+	else:
+		$Pivot/AnimatedSprite2D.play("standing")
+
+
+func _on_timer_pasos_timeout() -> void:
+	if hambreado:
+		caminando = false
+		return# Replace with function body.
+		# Decidimos si se mueve en este ciclo
+	direccion = randi() % 3
+
+	# Decide aleatoriamente si caminar o quedarse quieto
+	caminando = direccion != 2
+
+	# Cambia el tiempo para el siguiente movimiento
+	$TimerPasos.wait_time = randf_range(1.5, 4.0)
