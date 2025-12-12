@@ -22,6 +22,7 @@ func _ready() -> void:
 	$PlantTimer.wait_time = FIRST_PLANT_SPAWN
 	$AstromanTimer.start()
 	$PlantTimer.start()
+	$AudioStreamPlayer.play()
 	mob_scale = 0.8
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

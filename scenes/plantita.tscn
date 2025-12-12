@@ -105,3 +105,5 @@ offset_top = 10.0
 offset_right = 43.0
 offset_bottom = 17.0
 color = Color(0, 1, 0, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

@@ -1,7 +1,7 @@
 extends Area2D
 @export var speed = 400
 var screen_size
-var ratio_hambre
+var hambre
 var hambreado
 var inactivo
 
@@ -9,8 +9,8 @@ var inactivo
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	ratio_hambre = 0.001
-	$Hambre.value = 100
+	hambre = 0.001
+	$Pivot/AnimatedSprite2D/Hambre.value = 100
 	hambreado = false
 	inactivo = true
 	
@@ -19,12 +19,12 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	$Hambre.value -= ratio_hambre
+	$Pivot/AnimatedSprite2D/Hambre.value -= hambre
 	
-	if $Hambre.value == 0:
+	if $Pivot/AnimatedSprite2D/Hambre.value == 0:
 		queue_free()
 	if inactivo: 
-		if !hambreado:
+		if hambreado:
 			deambulando()
 		
 		
