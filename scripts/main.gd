@@ -41,4 +41,4 @@ func _on_mob_timer_timeout() -> void:
 
 	# Spawn the mob by adding it to the Main scene.
 	# $World/Sprite2D.add_child(mob)
-	$World.add_child(mob)
+	$World/Node2D.add_child(mob)

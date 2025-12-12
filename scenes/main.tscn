@@ -39,6 +39,8 @@ scale = Vector2(2, 2)
 position = Vector2(348, 3.9999695)
 rotation = 1.5707964
 
+[node name="Node2D" type="Node2D" parent="World"]
+
 [node name="Sol" parent="." instance=ExtResource("3_sugp2")]
 position = Vector2(640, 73)
 scale = Vector2(1.5, 1.5)
