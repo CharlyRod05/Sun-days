@@ -9,7 +9,7 @@ var mob_scale
 func _ready() -> void:
 	modify_timer = false
 	$MobTimer.start()
-	$MobTimer.wait_time = 1
+	$MobTimer.wait_time = 0.2
 	mob_scale = 0.8
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,4 +42,3 @@ func _on_mob_timer_timeout() -> void:
 	# Spawn the mob by adding it to the Main scene.
 	# $World/Sprite2D.add_child(mob)
 	$World.add_child(mob)
-	$MobTimer.wait_time=100

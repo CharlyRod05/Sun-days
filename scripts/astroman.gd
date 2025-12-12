@@ -19,7 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	
 	$Hambre.value -= ratio_hambre
-	position += Vector2(1,0)
+	
 	if $Hambre.value == 0:
 		queue_free()
 	if inactivo: 
