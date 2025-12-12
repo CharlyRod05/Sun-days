@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctg8nklvu05bk"]
+[gd_scene load_steps=15 format=3 uid="uid://ctg8nklvu05bk"]
 
 [ext_resource type="Script" uid="uid://vjxp1gdpf71s" path="res://scripts/astroman.gd" id="1_w3nl1"]
 [ext_resource type="Texture2D" uid="uid://c6ek40wvy7puv" path="res://sprites/Astronaut/Astronaut Player.png" id="2_owq8s"]
@@ -79,10 +79,59 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_owq8s"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2aesk"]
+bg_color = Color(0.9208162, 0.7106946, 0.453326, 1)
+border_width_left = 8
+border_width_top = 10
+border_width_right = 8
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="Astroman" type="Area2D"]
 scale = Vector2(1.6, 1.6)
 script = ExtResource("1_w3nl1")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
+scale = Vector2(0.99999994, 0.99999994)
 sprite_frames = SubResource("SpriteFrames_mj0ck")
 animation = &"walking"
+offset = Vector2(0, -616)
+metadata/_edit_group_ = true
+
+[node name="Hambre" type="ProgressBar" parent="Pivot/AnimatedSprite2D"]
+offset_left = -54.99999
+offset_top = -58.000008
+offset_right = 101.000015
+offset_bottom = -31.000008
+scale = Vector2(0.7, 0.7)
+theme_override_styles/background = SubResource("StyleBoxFlat_owq8s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2aesk")
+value = 50.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Pivot/AnimatedSprite2D/Hambre"]
+layout_mode = 0
+offset_left = 7.1428566
+offset_top = 10.0
+offset_right = 13.392857
+offset_bottom = 17.0
+color = Color(1, 0, 0, 1)
+
+[node name="TimerPasos" type="Timer" parent="."]
