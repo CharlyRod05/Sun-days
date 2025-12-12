@@ -4,6 +4,9 @@ var screen_size
 var ratio_hambre
 var hambreado
 var inactivo
+signal caminandoIzquierda
+signal caminandoDerecha
+signal paradito
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -28,13 +31,21 @@ func _process(delta: float) -> void:
 		
 		
 func deambulando() -> void:
+	inactivo = false
 	var direccion = randf_range(0,2)
+	var tiempo = randf_range(2,6)
+	$TimerPasos.wait_time = tiempo
+	$TimerPasos.start()
 	match direccion:
 		0:#izquierda
-			position += Vector2(1,0)
+			while($TimerPasos.time_left==0):
+				$Pivot.rotation += 5
 		1:
-			pass
+			while($TimerPasos.time_left==0):
+				$Pivot.rotation -= 5
 		2:
-			pass
+			while($TimerPasos.time_left==0):
+				pass
 		_:
 			pass
+	inactivo = true
