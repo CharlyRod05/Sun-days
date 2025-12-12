@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkhg3spwtfwlb"]
+[gd_scene load_steps=14 format=3 uid="uid://dkhg3spwtfwlb"]
 
 [ext_resource type="Texture2D" uid="uid://beimwcc3igxl" path="res://sprites/Plants/beet/beet_3.png" id="1_10wjv"]
+[ext_resource type="Script" uid="uid://ckhrs7x1obim3" path="res://scripts/plantita.gd" id="1_ly16y"]
 [ext_resource type="Texture2D" uid="uid://bwe1ivynowau4" path="res://sprites/Plants/beet/beet_8.png" id="2_4mttf"]
 [ext_resource type="Texture2D" uid="uid://dxx0o0i51u8fk" path="res://sprites/Plants/beet/beet_11.png" id="3_aljve"]
 [ext_resource type="Texture2D" uid="uid://d1h6rnvitbc0e" path="res://sprites/Plants/beet/beet_13.png" id="4_qvcq6"]
@@ -10,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c5xrujb4l1uq4" path="res://sprites/Plants/cabbage/cabbage_20.png" id="8_so0tc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cc3en"]
-size = Vector2(24, 34)
+size = Vector2(31, 41)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hmfa8"]
 animations = [{
@@ -49,14 +50,58 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10wjv"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mttf"]
+bg_color = Color(1, 1, 0, 1)
+border_width_left = 8
+border_width_top = 10
+border_width_right = 8
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
 [node name="Plantita" type="Area2D"]
-metadata/_edit_group_ = true
+script = ExtResource("1_ly16y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 10)
+position = Vector2(-0.5, 6.5)
 shape = SubResource("RectangleShape2D_cc3en")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.6, 1.6)
 sprite_frames = SubResource("SpriteFrames_hmfa8")
-animation = &"cabbage"
+animation = &"beet"
+frame = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -55.0
+offset_top = -57.999996
+offset_right = 101.0
+offset_bottom = -30.999996
+scale = Vector2(0.7, 0.7)
+theme_override_styles/background = SubResource("StyleBoxFlat_10wjv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4mttf")
+value = 1.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+metadata/_edit_group_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ProgressBar"]
+layout_mode = 0
+offset_left = 37.142857
+offset_top = 10.0
+offset_right = 43.0
+offset_bottom = 17.0
+color = Color(0, 1, 0, 1)

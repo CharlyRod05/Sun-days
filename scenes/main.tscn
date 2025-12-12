@@ -1,15 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://h7lwbqghi1ch"]
+[gd_scene load_steps=8 format=3 uid="uid://h7lwbqghi1ch"]
 
 [ext_resource type="PackedScene" uid="uid://bbabb4j20mrlq" path="res://scenes/world.tscn" id="1_0wfyh"]
+[ext_resource type="Script" uid="uid://b5yedgqlcctmn" path="res://scripts/main.gd" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://ctg8nklvu05bk" path="res://scenes/astroman.tscn" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://dkhg3spwtfwlb" path="res://plantita.tscn" id="3_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://cvntaf5p7dcse" path="res://sol.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://dkhg3spwtfwlb" path="res://scenes/plantita.tscn" id="3_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cvntaf5p7dcse" path="res://scenes/sol.tscn" id="3_sugp2"]
 [ext_resource type="Texture2D" uid="uid://dxvfgpdcaovmx" path="res://sprites/World/cieloo.webp" id="5_tbgi4"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_tbgi4"]
 points = PackedVector2Array(0, 0, -54, 278, 54, 278)
 
 [node name="Main" type="Node"]
+script = ExtResource("1_tefeu")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1277.0
@@ -35,11 +37,14 @@ rotation = 1.5707964
 position = Vector2(640, 73)
 scale = Vector2(1.5, 1.5)
 
-[node name="Area2D" type="Area2D" parent="Sol"]
+[node name="Rayo de sol" type="Area2D" parent="Sol"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol/Rayo de sol"]
 shape = SubResource("ConvexPolygonShape2D_tbgi4")
 
-[node name="Polygon2D" type="Polygon2D" parent="Sol/Area2D/CollisionShape2D"]
+[node name="Polygon2D" type="Polygon2D" parent="Sol/Rayo de sol"]
 color = Color(1, 1, 0, 0.12941177)
 polygon = PackedVector2Array(-5.3333435, 31.333332, -48, 280.6667, 46, 279.33334, 5.333313, 31.333332)
+
+[connection signal="area_entered" from="Sol/Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_entered"]
+[connection signal="area_exited" from="Sol/Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_exited"]
