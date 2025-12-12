@@ -24,13 +24,3 @@ func _process(delta: float) -> void:
 		$ProgressBar.value += ratio_planta_crecido
 	else:
 		$ProgressBar.value -= ratio_planta_decrecido
-		
-		
-
-
-func _on_rayo_de_sol_area_entered(area: Area2D) -> void:
-	dentro = true
-
-
-func _on_rayo_de_sol_area_exited(area: Area2D) -> void:
-	dentro = false
