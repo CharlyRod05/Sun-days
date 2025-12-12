@@ -19,8 +19,17 @@ offset_right = 1277.0
 offset_bottom = 714.0
 texture = ExtResource("5_tbgi4")
 
-[node name="Area2D" type="Node2D" parent="."]
-visibility_layer = 3
+[node name="Rayo de sol" type="Area2D" parent="."]
+position = Vector2(640, 73)
+scale = Vector2(1.5, 1.5)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rayo de sol"]
+shape = SubResource("ConvexPolygonShape2D_tbgi4")
+
+[node name="Polygon2D" type="Polygon2D" parent="Rayo de sol"]
+color = Color(1, 1, 0, 0.12941177)
+polygon = PackedVector2Array(-5.3333435, 31.333332, -55.333344, 276.6667, -48.666687, 274.00003, -40, 272.00003, -32, 271.33334, 0, 271.33334, 23.333313, 272.00003, 39.333313, 273.33334, 50, 275.33334, 5.333313, 31.333332)
 
 [node name="World" parent="." instance=ExtResource("1_0wfyh")]
 position = Vector2(632, 1120)
@@ -34,18 +43,8 @@ rotation = 1.5707964
 position = Vector2(640, 73)
 scale = Vector2(1.5, 1.5)
 
-[node name="Rayo de sol" type="Area2D" parent="Sol"]
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sol/Rayo de sol"]
-shape = SubResource("ConvexPolygonShape2D_tbgi4")
-
-[node name="Polygon2D" type="Polygon2D" parent="Sol/Rayo de sol"]
-color = Color(1, 1, 0, 0.12941177)
-polygon = PackedVector2Array(-5.3333435, 31.333332, -48, 280.6667, 46, 279.33334, 5.333313, 31.333332)
-
 [node name="MobTimer" type="Timer" parent="."]
 
-[connection signal="area_entered" from="Sol/Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_entered"]
-[connection signal="area_exited" from="Sol/Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_exited"]
+[connection signal="area_entered" from="Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_entered"]
+[connection signal="area_exited" from="Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_exited"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
