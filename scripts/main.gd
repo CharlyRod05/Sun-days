@@ -8,6 +8,7 @@ var modify_timer
 func _ready() -> void:
 	modify_timer = false
 	$MobTimer.start()
+	$MobTimer.wait_time = 0.2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -36,4 +37,5 @@ func _on_mob_timer_timeout() -> void:
 	mob.rotation = direction
 
 	# Spawn the mob by adding it to the Main scene.
-	add_child(mob)
+	# $World/Sprite2D.add_child(mob)
+	$World.add_child(mob)

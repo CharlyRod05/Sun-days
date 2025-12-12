@@ -5,24 +5,19 @@
 
 [sub_resource type="Curve2D" id="Curve2D_rwgxs"]
 _data = {
-"points": PackedVector2Array(-453.23642, -0.45687377, 453.23642, 0.45687377, 657.71313, 463.72986, -0.8205627, -470.69485, 0.8205627, 470.69485, 1481.2947, 1294.0001, 444.43408, 1.1938219, -444.43408, -1.1938219, 657.71313, 2124.2705, 0, 474.04825, 0, -474.04825, -165.86847, 1294.0001, -444.08105, -0.5281259, 444.08105, 0.5281259, 657.71313, 463.72986)
+"points": PackedVector2Array(-116, 0, 116, 0, 0, -320, 0, -209.0909, 0, 209.0909, 320, 0, 157, -4, -157, 4, 0, 320, 4, 146, -4, -146, -320, 0, -181, 8, 181, -8, 0, -320)
 }
 point_count = 5
 
 [node name="World" type="Area2D"]
-position = Vector2(640, 1112)
 script = ExtResource("1_rwgxs")
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
 texture = ExtResource("2_4wyf3")
 
 [node name="EntityPath" type="Path2D" parent="."]
-position = Vector2(-511.10468, -997.45844)
-scale = Vector2(0.7770936, 0.7708333)
 curve = SubResource("Curve2D_rwgxs")
-metadata/_edit_group_ = true
 
 [node name="EntitySpawnLocation" type="PathFollow2D" parent="EntityPath"]
-position = Vector2(657.71313, 463.72986)
-rotation = 0.0010080357
+position = Vector2(0, -320)
