@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bbabb4j20mrlq"]
 
 [ext_resource type="Script" uid="uid://dwtunkrag0qe0" path="res://scripts/world.gd" id="1_rwgxs"]
-[ext_resource type="Texture2D" uid="uid://dilf4dhnom1lf" path="res://sprites/World/world.png" id="2_4wyf3"]
+[ext_resource type="Texture2D" uid="uid://bmuljqksmooj1" path="res://sprites/World/world.png" id="2_4wyf3"]
 
 [sub_resource type="Curve2D" id="Curve2D_rwgxs"]
 _data = {
@@ -12,12 +12,10 @@ point_count = 5
 [node name="World" type="Area2D"]
 position = Vector2(640, 1112)
 script = ExtResource("1_rwgxs")
-astroman_scene = null
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("2_4wyf3")
-metadata/_edit_group_ = true
 
 [node name="EntityPath" type="Path2D" parent="."]
 position = Vector2(-511.10468, -997.45844)
