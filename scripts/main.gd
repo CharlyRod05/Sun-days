@@ -2,23 +2,25 @@ extends Node
 
 @export var astroman_scene: PackedScene
 @export var plant_scene: PackedScene
-
+@export var arreglo_plantitas : Array[Node]
 var a_modify_timer
 var p_modify_timer
 var mob_scale
+var world_frame = 0
 
-var FIRST_PLANT_SPAWN = 5
-var FIRST_ASTROMAN_SPAWN = 2
-var ASTROMAN_SPAWN_TIME_LO = 20
-var ASTROMAN_SPAWN_TIME_HI = 25
-var PLANT_AFTER_ASTROMAN_TIME_LO = 7
-var PLANT_AFTER_ASTROMAN_TIME_HI = 10
+@export var FIRST_PLANT_SPAWN = 5.0 
+@export var FIRST_ASTROMAN_SPAWN = 2.0
+@export var ASTROMAN_SPAWN_TIME_LO = 20.0
+@export var ASTROMAN_SPAWN_TIME_HI = 25.0
+@export var PLANT_AFTER_ASTROMAN_TIME_LO = 7.0
+@export var PLANT_AFTER_ASTROMAN_TIME_HI = 10.0
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	a_modify_timer = false
 	p_modify_timer = false
+	arreglo_plantitas=[]
 	$AstromanTimer.wait_time = FIRST_ASTROMAN_SPAWN
 	$PlantTimer.wait_time = FIRST_PLANT_SPAWN
 	$AstromanTimer.start()
@@ -34,6 +36,9 @@ func _process(delta: float) -> void:
 	if p_modify_timer:
 		$PlantTimer.wait_time = randf_range(PLANT_AFTER_ASTROMAN_TIME_LO, PLANT_AFTER_ASTROMAN_TIME_HI)
 		p_modify_timer = false
+		
+	
+	$World/Sprite2D.frame = world_frame
 
 func _on_mob_timer_timeout() -> void:
 	a_modify_timer = true
@@ -86,4 +91,15 @@ func _on_plant_timer_timeout() -> void:
 	mob.rotation = direction
 	# Spawn the mob by adding it to the Main scene.
 	# $World/Sprite2D.add_child(mob)
+	arreglo_plantitas.append(mob)
+	if arreglo_plantitas.size() > 3 && arreglo_plantitas.size() < 5 :
+		world_frame = 1
+	elif arreglo_plantitas.size() >= 5 && arreglo_plantitas.size() < 7:
+		world_frame = 2
+	elif arreglo_plantitas.size() >= 7 && arreglo_plantitas.size() < 11:
+		world_frame = 3
+	elif arreglo_plantitas.size() >= 11 && arreglo_plantitas.size() < 19:
+		world_frame = 4
+	elif arreglo_plantitas.size() >= 19:
+		world_frame = 5
 	$World.add_child(mob)

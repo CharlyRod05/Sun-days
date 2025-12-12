@@ -15,12 +15,6 @@ points = PackedVector2Array(0, 0, -80.66669, 352.6667, 82.66666, 366.00003)
 script = ExtResource("1_tefeu")
 astroman_scene = ExtResource("2_sugp2")
 plant_scene = ExtResource("3_jyhfs")
-FIRST_PLANT_SPAWN = 1.0
-FIRST_ASTROMAN_SPAWN = 1.0
-ASTROMAN_SPAWN_TIME_LO = 1.0
-ASTROMAN_SPAWN_TIME_HI = 1.0
-PLANT_AFTER_ASTROMAN_TIME_LO = 0.1
-PLANT_AFTER_ASTROMAN_TIME_HI = 0.1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1277.0
