@@ -13,6 +13,7 @@ points = PackedVector2Array(0, 0, -54, 278, 54, 278)
 [node name="Main" type="Node"]
 script = ExtResource("1_tefeu")
 astroman_scene = ExtResource("2_sugp2")
+plant_scene = ExtResource("3_jyhfs")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1277.0
@@ -43,8 +44,11 @@ rotation = 1.5707964
 position = Vector2(640, 73)
 scale = Vector2(1.5, 1.5)
 
-[node name="MobTimer" type="Timer" parent="."]
+[node name="AstromanTimer" type="Timer" parent="."]
+
+[node name="PlantTimer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_entered"]
 [connection signal="area_exited" from="Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_exited"]
-[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="AstromanTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="PlantTimer" to="." method="_on_plant_timer_timeout"]
