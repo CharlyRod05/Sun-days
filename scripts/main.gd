@@ -3,12 +3,14 @@ extends Node
 @export var astroman_scene: PackedScene
 
 var modify_timer
+var mob_scale
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	modify_timer = false
 	$MobTimer.start()
-	$MobTimer.wait_time = 0.2
+	$MobTimer.wait_time = 1
+	mob_scale = 0.8
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,6 +30,7 @@ func _on_mob_timer_timeout() -> void:
 
 	# Set the mob's position to the random location.
 	mob.position = mob_spawn_location.position
+	mob.scale = Vector2(mob_scale,mob_scale)
 
 	# Set the mob's direction perpendicular to the path direction.
 	var direction = mob_spawn_location.rotation
@@ -39,3 +42,4 @@ func _on_mob_timer_timeout() -> void:
 	# Spawn the mob by adding it to the Main scene.
 	# $World/Sprite2D.add_child(mob)
 	$World.add_child(mob)
+	$MobTimer.wait_time=100

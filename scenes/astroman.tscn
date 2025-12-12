@@ -106,6 +106,7 @@ scale = Vector2(1.6, 1.6)
 script = ExtResource("1_w3nl1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -6.2831855
 sprite_frames = SubResource("SpriteFrames_mj0ck")
 animation = &"walking"
 
