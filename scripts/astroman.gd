@@ -1,7 +1,7 @@
 extends Area2D
 @export var speed = 0.1
 var screen_size
-var hambre
+var ratio_hambre
 var hambreado
 var caminando
 var direccion
