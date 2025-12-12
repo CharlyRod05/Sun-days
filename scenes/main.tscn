@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dxvfgpdcaovmx" path="res://sprites/World/cieloo.webp" id="5_tbgi4"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_tbgi4"]
-points = PackedVector2Array(0, 0, -54, 278, 54, 278)
+points = PackedVector2Array(0, 0, -80.66669, 352.6667, 82.66666, 366.00003)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_tefeu")
@@ -36,10 +36,6 @@ polygon = PackedVector2Array(-5.3333435, 31.333332, -55.333344, 276.6667, -48.66
 position = Vector2(632, 1120)
 scale = Vector2(2, 2)
 
-[node name="Plantita" parent="World" instance=ExtResource("3_jyhfs")]
-position = Vector2(348, 3.9999695)
-rotation = 1.5707964
-
 [node name="Node2D" type="Node2D" parent="World"]
 
 [node name="Sol" parent="." instance=ExtResource("3_sugp2")]
@@ -50,7 +46,7 @@ scale = Vector2(1.5, 1.5)
 
 [node name="PlantTimer" type="Timer" parent="."]
 
-[connection signal="area_entered" from="Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_entered"]
-[connection signal="area_exited" from="Rayo de sol" to="World/Plantita" method="_on_rayo_de_sol_area_exited"]
+[connection signal="area_entered" from="Rayo de sol" to="World" method="_on_rayo_de_sol_area_entered"]
+[connection signal="area_exited" from="Rayo de sol" to="World" method="_on_rayo_de_sol_area_exited"]
 [connection signal="timeout" from="AstromanTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="PlantTimer" to="." method="_on_plant_timer_timeout"]

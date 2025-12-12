@@ -7,12 +7,12 @@ var a_modify_timer
 var p_modify_timer
 var mob_scale
 
-var FIRST_PLANT_SPAWN = 4
+var FIRST_PLANT_SPAWN = 5
 var FIRST_ASTROMAN_SPAWN = 2
-var ASTROMAN_SPAWN_TIME_LO = 7
-var ASTROMAN_SPAWN_TIME_HI = 9
-var PLANT_AFTER_ASTROMAN_TIME_LO = 3
-var PLANT_AFTER_ASTROMAN_TIME_HI = 5
+var ASTROMAN_SPAWN_TIME_LO = 20
+var ASTROMAN_SPAWN_TIME_HI = 25
+var PLANT_AFTER_ASTROMAN_TIME_LO = 7
+var PLANT_AFTER_ASTROMAN_TIME_HI = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
