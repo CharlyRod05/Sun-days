@@ -7,6 +7,7 @@ var sPlant1
 var sPlant2
 var sPlant3
 var sPlant4
+var eat
 
 var previous_plant_frame
 
@@ -19,7 +20,9 @@ func _ready() -> void:
 	sPlant2 = load("res://Sounds/plant2.wav")
 	sPlant3 = load("res://Sounds/plant3.wav")
 	sPlant4 = load("res://Sounds/plant4.wav")
+	eat = load("res://Sounds/eat-sfx.wav")
 	previous_plant_frame = -1
+	name = "Arbolin"
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,3 +52,14 @@ func _process(delta: float) -> void:
 		$ProgressBar.value += ratio_planta_crecido
 	else:
 		$ProgressBar.value -= ratio_planta_decrecido
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.name == "Rayo de sol" or area.name.begins_with("Arbolin"):
+		return
+	$AudioStreamPlayer2D.stream = eat
+	$AudioStreamPlayer2D.play()
+	area.get_node("AnimatedSprite2D/Hambre").value = 100
+	$ProgressBar.value = 0
+	$AnimatedSprite2D.frame = 0
+	

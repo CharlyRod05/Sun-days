@@ -15,11 +15,6 @@ points = PackedVector2Array(0, 0, -80.66669, 352.6667, 82.66666, 366.00003)
 script = ExtResource("1_tefeu")
 astroman_scene = ExtResource("2_sugp2")
 plant_scene = ExtResource("3_jyhfs")
-FIRST_ASTROMAN_SPAWN = 5.0
-ASTROMAN_SPAWN_TIME_LO = 5.0
-ASTROMAN_SPAWN_TIME_HI = 5.0
-PLANT_AFTER_ASTROMAN_TIME_LO = 5.0
-PLANT_AFTER_ASTROMAN_TIME_HI = 5.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1277.0
@@ -29,7 +24,7 @@ texture = ExtResource("5_tbgi4")
 [node name="Rayo de sol" type="Area2D" parent="."]
 position = Vector2(640, 73)
 scale = Vector2(1.5, 1.5)
-collision_layer = 4
+collision_layer = 8
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rayo de sol"]
@@ -42,6 +37,7 @@ polygon = PackedVector2Array(-5.3333435, 31.333332, -55.333344, 276.6667, -48.66
 [node name="World" parent="." instance=ExtResource("1_0wfyh")]
 position = Vector2(632, 1120)
 scale = Vector2(2, 2)
+collision_mask = 9
 
 [node name="Node2D" type="Node2D" parent="World"]
 

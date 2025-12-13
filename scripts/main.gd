@@ -102,4 +102,5 @@ func _on_plant_timer_timeout() -> void:
 		world_frame = 4
 	elif arreglo_plantitas.size() >= 19:
 		world_frame = 5
+	
 	$World.add_child(mob)
