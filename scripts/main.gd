@@ -8,12 +8,12 @@ var p_modify_timer
 var mob_scale
 var world_frame = 0
 
-@export var FIRST_PLANT_SPAWN = 5.0 
-@export var FIRST_ASTROMAN_SPAWN = 2.0
+@export var FIRST_PLANT_SPAWN = 13.0 
+@export var FIRST_ASTROMAN_SPAWN = 7.0
 @export var ASTROMAN_SPAWN_TIME_LO = 20.0
 @export var ASTROMAN_SPAWN_TIME_HI = 25.0
-@export var PLANT_AFTER_ASTROMAN_TIME_LO = 7.0
-@export var PLANT_AFTER_ASTROMAN_TIME_HI = 10.0
+@export var PLANT_AFTER_ASTROMAN_TIME_LO = 13.0
+@export var PLANT_AFTER_ASTROMAN_TIME_HI = 20.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -27,6 +27,9 @@ func _ready() -> void:
 	$PlantTimer.start()
 	$AudioStreamPlayer.play()
 	mob_scale = 0.8
+	
+	_on_mob_timer_timeout()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -94,13 +97,18 @@ func _on_plant_timer_timeout() -> void:
 	arreglo_plantitas.append(mob)
 	if arreglo_plantitas.size() > 3 && arreglo_plantitas.size() < 5 :
 		world_frame = 1
+		$Cielito.frame = 1
 	elif arreglo_plantitas.size() >= 5 && arreglo_plantitas.size() < 7:
 		world_frame = 2
+		$Cielito.frame = 2
 	elif arreglo_plantitas.size() >= 7 && arreglo_plantitas.size() < 11:
 		world_frame = 3
+		$Cielito.frame = 3
 	elif arreglo_plantitas.size() >= 11 && arreglo_plantitas.size() < 19:
 		world_frame = 4
+		$Cielito.frame = 4
 	elif arreglo_plantitas.size() >= 19:
 		world_frame = 5
+		$Cielito.frame = 5
 	
 	$World.add_child(mob)

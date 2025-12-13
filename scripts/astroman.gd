@@ -6,15 +6,16 @@ var hambreado
 var caminando
 var direccion
 
-
+var death
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	ratio_hambre = 0.01
+	ratio_hambre = 0.025
 	$Pivot/AnimatedSprite2D/Hambre.value = 100
 	hambreado = false
 	caminando = false
+	death = load("res://Sounds/death-sfx.wav")
 	
 
 
@@ -24,6 +25,8 @@ func _process(delta: float) -> void:
 	$Pivot/AnimatedSprite2D/Hambre.value -= ratio_hambre
 	
 	if $Pivot/AnimatedSprite2D/Hambre.value == 0:
+		$AudioStreamPlayer2D.stream = death
+		$AudioStreamPlayer2D.play()
 		queue_free()
 	if $Pivot/AnimatedSprite2D/Hambre.value <= 25:
 		hambreado = true
@@ -54,5 +57,8 @@ func _on_timer_pasos_timeout() -> void:
 	# Decide aleatoriamente si caminar o quedarse quieto
 	caminando = direccion != 2
 
-	# Cambia el tiempo para el siguiente movimiento
-	$TimerPasos.wait_time = randf_range(1.5, 4.0)
+	if !caminando:
+		$TimerPasos.wait_time = randf_range(1.0, 2.0)
+	else:
+		# Cambia el tiempo para el siguiente movimiento
+		$TimerPasos.wait_time = randf_range(4.0, 7.0)

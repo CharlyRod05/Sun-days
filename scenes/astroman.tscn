@@ -175,4 +175,6 @@ shape = SubResource("CapsuleShape2D_owq8s")
 [node name="TimerPasos" type="Timer" parent="."]
 autostart = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="timeout" from="TimerPasos" to="." method="_on_timer_pasos_timeout"]

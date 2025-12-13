@@ -1,12 +1,43 @@
-[gd_scene load_steps=9 format=3 uid="uid://h7lwbqghi1ch"]
+[gd_scene load_steps=15 format=3 uid="uid://h7lwbqghi1ch"]
 
 [ext_resource type="PackedScene" uid="uid://bbabb4j20mrlq" path="res://scenes/world.tscn" id="1_0wfyh"]
 [ext_resource type="Script" uid="uid://b5yedgqlcctmn" path="res://scripts/main.gd" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://ctg8nklvu05bk" path="res://scenes/astroman.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://dkhg3spwtfwlb" path="res://scenes/plantita.tscn" id="3_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://cvntaf5p7dcse" path="res://scenes/sol.tscn" id="3_sugp2"]
-[ext_resource type="Texture2D" uid="uid://dxvfgpdcaovmx" path="res://sprites/World/cieloo.webp" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://x0jkrgpbv5d8" path="res://sprites/World/sky6.jpg" id="4_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://btr7fa0h73or0" path="res://sprites/World/sky5.jpg" id="5_trceg"]
+[ext_resource type="Texture2D" uid="uid://dqvkmp2bjt2ab" path="res://sprites/World/sky4.jpg" id="6_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://bp2crwftvuwgu" path="res://sprites/World/sky3.jpg" id="7_jkv2x"]
 [ext_resource type="AudioStream" uid="uid://c15bwvrxq2ftq" path="res://Sounds/SUN-DAYS.wav" id="7_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://bhuoet4l086tt" path="res://sprites/World/sky2.jpg" id="8_jbj1t"]
+[ext_resource type="Texture2D" uid="uid://bem6cnl3auu67" path="res://sprites/World/sky1.jpg" id="9_muem4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dp3eg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_eb6dy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_trceg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a8y0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jkv2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jbj1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_muem4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_tbgi4"]
 points = PackedVector2Array(0, 0, -80.66669, 352.6667, 82.66666, 366.00003)
@@ -15,16 +46,11 @@ points = PackedVector2Array(0, 0, -80.66669, 352.6667, 82.66666, 366.00003)
 script = ExtResource("1_tefeu")
 astroman_scene = ExtResource("2_sugp2")
 plant_scene = ExtResource("3_jyhfs")
-FIRST_ASTROMAN_SPAWN = 5.0
-ASTROMAN_SPAWN_TIME_LO = 5.0
-ASTROMAN_SPAWN_TIME_HI = 5.0
-PLANT_AFTER_ASTROMAN_TIME_LO = 5.0
-PLANT_AFTER_ASTROMAN_TIME_HI = 5.0
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1277.0
-offset_bottom = 714.0
-texture = ExtResource("5_tbgi4")
+[node name="Cielito" type="AnimatedSprite2D" parent="."]
+position = Vector2(632, 363.50003)
+scale = Vector2(4, 3.938889)
+sprite_frames = SubResource("SpriteFrames_dp3eg")
 
 [node name="Rayo de sol" type="Area2D" parent="."]
 position = Vector2(640, 73)

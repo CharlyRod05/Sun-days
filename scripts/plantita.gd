@@ -15,7 +15,7 @@ var previous_plant_frame
 func _ready() -> void:
 	dentro = false
 	ratio_planta_crecido = 0.3
-	ratio_planta_decrecido = 0.1
+	ratio_planta_decrecido = 0.15
 	sPlant1 = load("res://Sounds/plant1.wav")
 	sPlant2 = load("res://Sounds/plant2.wav")
 	sPlant3 = load("res://Sounds/plant3.wav")
@@ -56,6 +56,8 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "Rayo de sol" or area.name.begins_with("Arbolin"):
+		return
+	if $AnimatedSprite2D.frame < 1:
 		return
 	$AudioStreamPlayer2D.stream = eat
 	$AudioStreamPlayer2D.play()
